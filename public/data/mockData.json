@@ -1,0 +1,36 @@
+{
+  "initialTransactions": [
+    {
+      "id": 1,
+      "title": "Salary",
+      "amount": 50000,
+      "type": "income",
+      "category": "Job",
+      "date": "2026-04-01"
+    },
+    {
+      "id": 2,
+      "title": "Groceries",
+      "amount": 2000,
+      "type": "expense",
+      "category": "Food",
+      "date": "2026-04-02"
+    },
+    {
+      "id": 3,
+      "title": "Freelance Work",
+      "amount": 8000,
+      "type": "income",
+      "category": "Side Hustle",
+      "date": "2026-04-03"
+    },
+    {
+      "id": 4,
+      "title": "Electricity Bill",
+      "amount": 1500,
+      "type": "expense",
+      "category": "Utilities",
+      "date": "2026-04-03"
+    }
+  ]
+}

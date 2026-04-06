@@ -20,7 +20,7 @@
 
   /* Cards */
   .card {
-    @apply bg-white dark:bg-black rounded-lg border border-slate-200 dark:border-slate-800 transition-all duration-150;
+    @apply bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 transition-all duration-150;
   }
 
   .card-hover {

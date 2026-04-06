@@ -1,6 +1,6 @@
 # Professional Finance Dashboard
 
-A production-ready, highly responsive financial management application built with **React**, **Redux Toolkit**, and **Tailwind CSS**. This dashboard provides a world-class experience for tracking transactions, analyzing trends, and managing personal or business finances across all devices.
+A production-ready, highly responsive financial management application built with **React**, **Redux Toolkit**, and **Tailwind CSS**. This dashboard provides a experience for tracking transactions, analyzing trends, and managing personal or business finances across all devices.
 
 ## 🚀 Quick Start
 
@@ -9,7 +9,7 @@ Follow these steps to get the project running locally on your machine:
 1. **Clone and Install**
    ```bash
    # Navigate to the project directory
-   cd "New folder (2)"
+   cd "zorvyn-assignment"
 
    # Install dependencies
    npm install
@@ -29,7 +29,7 @@ Follow these steps to get the project running locally on your machine:
 
 ### 1. Advanced Data Management
 - **Redux Toolkit Integration**: A robust, centralized state management system for transactions, UI settings, and filters.
-- **LocalStorage Persistence**: Your dashboard settings (Theme, Role) and financial data are automatically saved and restored on page refresh.
+- **LocalStorage Persistence**: Your dashboard settings and financial data are automatically saved and restored on page refresh.
 - **Mock API Simulation**: Realistic asynchronous data fetching with a built-in loading spinner for a premium app feel.
 
 ### 2. Powerful Filtering & Grouping
@@ -45,7 +45,6 @@ Follow these steps to get the project running locally on your machine:
 - **Framer Motion Animations**: Smooth layout transitions, modal entries, and interactive micro-animations.
 - **Dark Mode Support**: A sleek, persistent dark theme for late-night financial tracking.
 - **Role-Based UI**: Simulate "Admin" (CRUD access) and "Viewer" (Read-only) roles to see how permissions affect the interface.
-- **Export to JSON**: One-click functionality to download your current filtered dataset for external analysis.
 
 ---
 
@@ -56,7 +55,6 @@ The application is built using a strict modular pattern, separating logic into f
 - **`src/components`**: Pure UI components like `TransactionTable`, `Insights`, and `EmptyState`.
 - **`src/store`**: Redux slices handling business logic and data persistence.
 - **`src/hooks` (if applicable)**: Custom logic for themes and responsiveness.
-- **`src/assets`**: Global styles and theme tokens.
 
 ### State Management
 We use **Redux Toolkit** to ensure a single source of truth. Asynchronous operations are handled via `createAsyncThunk` to simulate a real backend, providing a scalable foundation for future API integration.
@@ -70,5 +68,4 @@ Instead of simple overflow scrolling, we use **Tailwind breakpoints** (md, lg, x
 - **Framework**: [React](https://reactjs.org/) + [Vite](https://vitejs.dev/)
 - **State**: [Redux Toolkit](https://redux-toolkit.js.org/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
 - **Icons**: [Lucide React](https://lucide.dev/)

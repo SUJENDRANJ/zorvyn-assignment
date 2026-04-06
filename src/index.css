@@ -1,3 +1,71 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@custom-variant dark (&:where(.dark, .dark *));
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 transition-colors duration-300 antialiased font-sans selection:bg-blue-100;
+  }
+
+  .dark body {
+    @apply bg-black text-slate-100;
+  }
+}
+
+@layer components {
+  /* Layout */
+  .container-main {
+    @apply max-w-7xl mx-auto px-4 sm:px-8 py-8;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white dark:bg-black rounded-lg border border-slate-200 dark:border-slate-800 transition-all duration-150;
+  }
+
+  .card-hover {
+    @apply hover:border-slate-300 dark:hover:border-slate-700;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium text-sm transition-all duration-150 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed border;
+  }
+
+  .btn-primary {
+    @apply bg-slate-900 dark:bg-blue-600 hover:bg-slate-800 dark:hover:bg-blue-700 text-white border-transparent;
+  }
+
+  .btn-secondary {
+    @apply bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700;
+  }
+
+  /* Inputs & Selects */
+  .input-base {
+    @apply w-full px-3 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-md 
+           focus:outline-none focus:ring-1 focus:ring-slate-400 focus:border-slate-400 
+           transition-all text-sm text-slate-900 dark:text-slate-100 placeholder-slate-400;
+  }
+
+  .select-base {
+    @apply px-3 py-1.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-md text-xs font-medium 
+           text-slate-600 dark:text-slate-400 cursor-pointer outline-none focus:border-slate-400 transition-all;
+  }
+
+  /* Typography */
+  .heading-1 {
+    @apply text-lg font-semibold text-slate-900 dark:text-white tracking-tight;
+  }
+
+  .heading-2 {
+    @apply text-base font-semibold text-slate-900 dark:text-white;
+  }
+
+  .text-muted {
+    @apply text-slate-400 dark:text-slate-500;
+  }
+
+  .label-caps {
+    @apply text-[10px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-widest;
+  }
+}

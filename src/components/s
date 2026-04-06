@@ -1,0 +1,59 @@
+function getInsights(data) {
+  if (!data || data.length === 0) return null;
+
+  let income = 0;
+  let expense = 0;
+
+  const categorySpend = {};
+  const monthly = {};
+
+  data.forEach((t) => {
+    const amount = Number(t.amount);
+
+    // totals
+    if (t.type === "income") income += amount;
+    else expense += amount;
+
+    // category spend (only expenses)
+    if (t.type === "expense") {
+      categorySpend[t.category] = (categorySpend[t.category] || 0) + amount;
+    }
+
+    // monthly grouping
+    const month = new Date(t.date).toLocaleString("en-IN", {
+      month: "short",
+      year: "numeric",
+    });
+
+    if (!monthly[month]) {
+      monthly[month] = { income: 0, expense: 0 };
+    }
+
+    if (t.type === "income") monthly[month].income += amount;
+    else monthly[month].expense += amount;
+  });
+
+  // highest spending category
+  const highestCategory = Object.entries(categorySpend).sort(
+    (a, b) => b[1] - a[1],
+  )[0];
+
+  // monthly comparison
+  const months = Object.keys(monthly);
+  let comparison = null;
+
+  if (months.length >= 2) {
+    const last = monthly[months[months.length - 1]];
+    const prev = monthly[months[months.length - 2]];
+
+    comparison = last.expense - prev.expense;
+  }
+
+  return {
+    income,
+    expense,
+    balance: income - expense,
+    highestCategory,
+    comparison,
+  };
+}

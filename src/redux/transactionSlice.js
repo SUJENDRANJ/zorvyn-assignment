@@ -2,9 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 function getInitialTransactions() {
   const savedTransactions = JSON.parse(localStorage.getItem("transactions"));
-  console.log(savedTransactions);
 
-  return savedTransactions ? savedTransactions : [];
+  return savedTransactions ? savedTransactions : null;
 }
 
 export const fetchTransactions = createAsyncThunk(
@@ -12,7 +11,7 @@ export const fetchTransactions = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const localData = getInitialTransactions();
-      if (localData.length > 0) return localData;
+      if (localData !== null) return localData;
 
       const res = await fetch("data/mockData.json");
 
@@ -37,6 +36,8 @@ const transactionsSlice = createSlice({
 
   reducers: {
     addTransaction: (state, action) => {
+      if (!action.payload.id) action.payload.id = Date.now();
+
       state.items.push(action.payload);
 
       localStorage.setItem("transactions", JSON.stringify(state.items));

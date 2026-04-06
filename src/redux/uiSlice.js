@@ -18,7 +18,7 @@ const getInitialRole = () => {
 };
 
 const uiSlice = createSlice({
-  name: "theme",
+  name: "ui",
   initialState: { theme: getInitialTheme(), role: getInitialRole() },
   reducers: {
     toggleTheme: (state, action) => {

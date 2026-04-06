@@ -1,100 +1,44 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
-import { setRole, toggleTheme } from "./redux/uiSlice";
+import Header from "./components/Header";
+import { fetchTransactions } from "./redux/transactionSlice";
+import Dashboard from "./components/Dashboard";
 import { useEffect, useState } from "react";
-import {
-  addTransaction,
-  deleteTransaction,
-  editTransaction,
-  fetchTransactions,
-} from "./redux/transactionSlice";
+import Table from "./components/Table";
+import Insights from "./components/Insights";
 
 const App = () => {
-  const [value, setValue] = useState("");
-  const [edit, setEdit] = useState(null);
+  const [model, setModel] = useState(false);
 
   const dispatch = useDispatch();
-
-  const { items, error, loading } = useSelector((store) => store.transactions);
-
   useEffect(() => {
     dispatch(fetchTransactions());
-  }, [dispatch]);
+  }, []);
 
-  if (loading) return <p>Loading...</p>;
-
-  if (error) return <p>{error}</p>;
+  const { error, loading, items } = useSelector((store) => store.transactions);
 
   return (
-    <div className="dark:text-amber-600">
-      <button
-        onClick={() => {
-          dispatch(toggleTheme());
-          dispatch(setRole("viewer"));
-        }}
-      >
-        mode
-      </button>
+    <div
+      onClick={() => {
+        model && setModel(false);
+      }}
+    >
+      <Header />
+      {loading ? (
+        <p>loading...</p>
+      ) : error ? (
+        <p>{error}</p>
+      ) : (
+        <main>
+          {/* <Dashboard transactionsData={items} /> */}
 
-      {edit && (
-        <div>
-          <input
-            type="text"
-            value={value}
-            onChange={(e) => {
-              setValue(e.target.value);
-            }}
-            className="border"
-          />
-          <button
-            onClick={() => {
-              const obj = {
-                ...edit,
-                title: value,
-              };
+          {/* <Table transactionsData={items} model={model} setModel={setModel} /> */}
 
-              dispatch(editTransaction(obj));
-            }}
-          >
-            Edit
-          </button>
-        </div>
+          <Insights transactionsData={items} />
+        </main>
       )}
-
-      {items &&
-        items.map((item) => (
-          <div key={item.id}>
-            {item.title}
-
-            <button
-              className="border p-2"
-              onClick={() => {
-                setEdit(item);
-              }}
-            >
-              Edit
-            </button>
-            <button
-              className="border p-2"
-              onClick={() => {
-                dispatch(deleteTransaction(item.id));
-              }}
-            >
-              Delete
-            </button>
-          </div>
-        ))}
-
-      <button
-        onClick={() => {
-          dispatch(addTransaction({ id: Date.now(), title: "Suje" }));
-        }}
-      >
-        Add
-      </button>
     </div>
   );
-  // <RouterProvider router={router} />;
 };
 
 export default App;
